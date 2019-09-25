@@ -1,34 +1,31 @@
 ﻿import numpy as np
+import pandas as pd
 from scipy import stats
+html_template_header = """
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  </head>
+  <body>
+"""
+html_template_footer = """
+  </body>
+</html>
+"""
+print(html_template_header)
 
-service = np.array([1,0,0,0,1,0,1,0,0,0])
-cv = np.array([0,1,1,0,1,1,1,1,0,1])
-print('対応があるt検定')
-print(stats.ttest_rel(service, cv))
+df = pd.DataFrame({
+  'service_user' : ["ME大橋","ME田中良典","NB辻野","EL原","NB福本","SU安藤","SU大橋","SU江角","AR飯島","ME吉田"],
+  'service_data' : [1,0,0,0,1,0,1,0,0,0],
+  'cv_user'      : ["NB折笠","NB武本","ME有村","AR稲川","NBエンフボルド","SU佐田","SU冨永","SU大澤","ME駒井","ES大川"],
+  'cv_data'      : [0,1,1,0,1,1,1,1,0,1],
+})
+print(df.to_html())
+
 print('対応がないt検定')
-print(stats.ttest_ind(service, cv, equal_var = False))
+print(stats.ttest_ind(df.service_data, df.cv_data, equal_var = False))
 
-
-# stats.ttest_ind(service, cv)
-
-# # serviceの不偏分散
-# service_var = np.var(service,ddof=1)
-# # cvの不偏分散
-# cv_var = np.var(cv,ddof=1)
-
-# # serviceの自由度
-# service_df = len(service) - 1
-
-# # cvの自由度
-# cv_df = len(cv) - 1
-
-# # F比の値
-# f = service_var / cv_var
-
-# one_sided_pval1 = stats.f.cdf(f, service_df, cv_df)  # 片側検定のp値 1
-# one_sided_pval2 = stats.f.sf(f, service_df, cv_df)   # 片側検定のp値 2
-# two_sided_pval = min(one_sided_pval1, one_sided_pval2) * 2  # 両側検定のp値
-# print('ウェルチのt検定')
-# print('F:       ', round(f, 3))
-# print('p-value: ', round(two_sided_pval, 5))
-
+print(html_template_footer)
