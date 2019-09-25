@@ -1,5 +1,7 @@
 ﻿import numpy as np
 import pandas as pd
+import pytablewriter
+
 from scipy import stats
 html_template_header = """
 <!doctype html>
@@ -23,9 +25,15 @@ df = pd.DataFrame({
   'cv_user'      : ["NB折笠","NB武本","ME有村","AR稲川","NBエンフボルド","SU佐田","SU冨永","SU大澤","ME駒井","ES大川"],
   'cv_data'      : [0,1,1,0,1,1,1,1,0,1],
 })
-print(df.to_html())
+df2 = df.ix[:,['service_user','service_data','cv_user','cv_data']]
+print(df2.to_html())
 
 print('対応がないt検定')
 print(stats.ttest_ind(df.service_data, df.cv_data, equal_var = False))
 
+print('<br>')
 print(html_template_footer)
+
+writer = pytablewriter.MarkdownTableWriter()
+writer.from_dataframe(df)
+writer.write_table()
