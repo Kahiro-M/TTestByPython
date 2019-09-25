@@ -1,23 +1,11 @@
 ﻿import numpy as np
 import pandas as pd
+import html_template as html
 import pytablewriter
 
 from scipy import stats
-html_template_header = """
-<!doctype html>
-<html lang="ja">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  </head>
-  <body>
-"""
-html_template_footer = """
-  </body>
-</html>
-"""
-print(html_template_header)
+
+print(html.header)
 
 df = pd.DataFrame({
   'service_user' : ["ME大橋","ME田中良典","NB辻野","EL原","NB福本","SU安藤","SU大橋","SU江角","AR飯島","ME吉田"],
@@ -32,7 +20,7 @@ print('対応がないt検定')
 print(stats.ttest_ind(df.service_data, df.cv_data, equal_var = False))
 
 print('<br>')
-print(html_template_footer)
+print(html.footer)
 
 writer = pytablewriter.MarkdownTableWriter()
 writer.from_dataframe(df)
