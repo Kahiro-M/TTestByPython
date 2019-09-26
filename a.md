@@ -2,15 +2,15 @@
 p value : 0.08055387210850919
 
 
-|service_user|service_data|  cv_user  |cv_data|
-|------------|-----------:|-----------|------:|
-|ME Ohashi   |           1|NB Orikasa |      0|
-|ME Tanaka   |           0|NB Takemoto|      1|
-|NB Tujino   |           0|ME Arimura |      1|
-|EL Hara     |           0|AR Inagawa |      0|
-|NB Fukumoto |           1|NB Enfbold |      1|
-|SU Ando     |           0|SU Sada    |      1|
-|SU Ohashi   |           1|SU Tominaga|      1|
-|SU Esumi    |           0|SU Ozawa   |      1|
-|AR Iijima   |           0|ME Komai   |      0|
-|ME Yoshida  |           0|ES Okawa   |      1|
+|service_user|service_data|cv_user|cv_data|
+|------------|-----------:|-------|------:|
+|ME O        |           1|NB O   |      0|
+|ME T        |           0|NB T   |      1|
+|NB T        |           0|ME A   |      1|
+|EL H        |           0|AR I   |      0|
+|NB F        |           1|NB E   |      1|
+|SU A        |           0|SU S   |      1|
+|SU O        |           1|SU T   |      1|
+|SU E        |           0|SU O   |      1|
+|AR I        |           0|ME K   |      0|
+|ME Y        |           0|ES O   |      1|

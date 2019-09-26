@@ -15,9 +15,9 @@ b_csvData = pd.read_csv("./B.csv",encoding="utf_8")
 tTestResult = stats.ttest_ind(a_csvData.A_data, b_csvData.B_data, equal_var = False)
 
 df = pd.DataFrame({
-  'service_user' : ["ME Ohashi","ME Tanaka","NB Tujino","EL Hara","NB Fukumoto","SU Ando","SU Ohashi","SU Esumi","AR Iijima","ME Yoshida"],
+  'service_user' : ["ME O","ME T","NB T","EL H","NB F","SU A","SU O","SU E","AR I","ME Y"],
   'service_data' : [1,0,0,0,1,0,1,0,0,0],
-  'cv_user'      : ["NB Orikasa","NB Takemoto","ME Arimura","AR Inagawa","NB Enfbold","SU Sada","SU Tominaga","SU Ozawa","ME Komai","ES Okawa"],
+  'cv_user'      : ["NB O","NB T","ME A","AR I","NB E","SU S","SU T","SU O","ME K","ES O"],
   'cv_data'      : [0,1,1,0,1,1,1,1,0,1],
 })
 tTestResult = stats.ttest_ind(df.service_data, df.cv_data, equal_var = False)
