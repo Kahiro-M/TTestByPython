@@ -1,5 +1,5 @@
 build/
-html_template.pyc
+*.pyc
 tken.spec
 build/
 dist/
