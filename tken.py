@@ -5,7 +5,6 @@
 import numpy as np
 import pandas as pd
 import csv
-import pytablewriter
 
 from scipy import stats
 

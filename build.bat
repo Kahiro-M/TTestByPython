@@ -1,0 +1,1 @@
+pyinstaller.exe tken.py --onefile --windowed --icon=icon.ico
