@@ -30,7 +30,7 @@ b_csvData = pd.read_csv("./B.csv",encoding="utf_8")
 
 csvDf = a_csvData.join(b_csvData)
 
-tTestResult = stats.ttest_ind(csvDf.A_data, csvDf.B_data, equal_var = False)
+tTestResult = stats.ttest_ind(a_csvData.A_data, b_csvData.B_data, equal_var = False)
 resultStrPVal = "P value : "+str(tTestResult.pvalue)
 
 if tTestResult.pvalue<0.05:
