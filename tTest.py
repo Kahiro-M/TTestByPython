@@ -17,6 +17,15 @@ html_header = """
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style type="text/css">
+      <!--
+      table {
+        display:inline;
+        border:1px lightgray;
+        margin-right: 3px;
+        }
+      -->
+    </style>
   </head>
   <body>
 """
@@ -42,8 +51,8 @@ plt.title("violin plot")
 plt.savefig("violin.png")
 plt.clf()
 
-sns.distplot(a_csvData.A_data,label="A")
-sns.distplot(b_csvData.B_data,label="B")
+sns.distplot(a_csvData.A_data,label="Group A")
+sns.distplot(b_csvData.B_data,label="Group B")
 plt.legend()
 plt.title("Histgram")  
 plt.savefig("hist.png")
@@ -53,8 +62,6 @@ sns.barplot(x="Group",y="Data",data=anlyDf)
 plt.title("Bar plot")  
 plt.savefig("bar.png")
 plt.clf()
-
-csvDf = a_csvData.join(b_csvData)
 
 tTestResult = stats.ttest_ind(a_csvData.A_data, b_csvData.B_data, equal_var = False)
 resultStrPVal = "P value : "+str(tTestResult.pvalue)
@@ -67,12 +74,6 @@ else:
 # html output
 with open("result.html", mode="w", encoding="utf_8") as fileObj:
   fileObj.write(html_header)
-  fileObj.write("<img src='box.png'>")
-  fileObj.write("<img src='violin.png'>")
-  fileObj.write("<img src='hist.png'>")
-  fileObj.write("<img src='bar.png'>")
-  fileObj.write("<br>")
-  
   fileObj.write("対応がないt検定")
   fileObj.write("<br>")
   fileObj.write(resultStrPVal)
@@ -80,5 +81,13 @@ with open("result.html", mode="w", encoding="utf_8") as fileObj:
   fileObj.write(resultStrTTest)
   fileObj.write("<br>")
   fileObj.write("<br>")
-  fileObj.write(csvDf.to_html())
+  fileObj.write(a_csvData.to_html())
+  fileObj.write(b_csvData.to_html())
+  fileObj.write("<br>")
+
+  fileObj.write("<img src='box.png'>")
+  fileObj.write("<img src='violin.png'>")
+  fileObj.write("<img src='hist.png'>")
+  fileObj.write("<img src='bar.png'>")
+
   fileObj.write(html_footer)
