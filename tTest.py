@@ -51,6 +51,7 @@ plt.clf()
 
 sns.barplot(x="Group",y="Data",data=anlyDf)
 plt.title("Bar plot")  
+plt.savefig("bar.png")
 plt.clf()
 
 csvDf = a_csvData.join(b_csvData)

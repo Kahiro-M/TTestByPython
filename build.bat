@@ -1,1 +1,1 @@
-pyinstaller.exe tken.py --onefile --windowed --icon=icon.ico
+pyinstaller.exe tTest.py --onefile --windowed --icon=icon.ico
