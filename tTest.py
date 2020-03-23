@@ -47,6 +47,7 @@ else:
   resultStrTTest = "有意差なし"
 
 anlyDf=pd.DataFrame({
+  "User":np.concatenate([a_csvData.A_user,b_csvData.B_user]),
   "Group":np.concatenate([np.tile("A",len(a_csvData.A_data)),(np.tile("B",len(b_csvData.B_data)))]),
   "Data":np.concatenate([a_csvData.A_data,b_csvData.B_data]),
   })  
@@ -92,8 +93,7 @@ with open("result.html", mode="w", encoding="utf_8") as fileObj:
   fileObj.write(resultStrTTest)
   fileObj.write("<br>")
   fileObj.write("<br>")
-  fileObj.write(a_csvData.to_html())
-  fileObj.write(b_csvData.to_html())
+  fileObj.write(anlyDf.to_html())
   fileObj.write("<br>")
 
   fileObj.write("<img src='swarm.png'>")
